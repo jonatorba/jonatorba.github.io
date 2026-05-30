@@ -6,499 +6,195 @@
   <title>Analytics Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
-    /* ───────── TOKENS ───────── */
     :root {
-      --blue-900: #042C53;
-      --blue-800: #0C447C;
-      --blue-700: #185FA5;
-      --blue-500: #378ADD;
-      --blue-200: #B5D4F4;
-      --blue-50:  #E6F1FB;
-      --gray-900: #2C2C2A;
-      --gray-700: #5F5E5A;
-      --gray-400: #888780;
-      --gray-200: #D3D1C7;
-      --gray-100: #F1EFE8;
-      --green-700: #3B6D11;
-      --green-400: #639922;
-      --green-100: #EAF3DE;
-      --amber-700: #854F0B;
-      --amber-400: #EF9F27;
-      --amber-100: #FAEEDA;
-      --red-700:  #A32D2D;
-      --red-400:  #E24B4A;
-      --red-50:   #FCEBEB;
-      --purple-700: #534AB7;
-      --purple-200: #AFA9EC;
-      --purple-50:  #EEEDFE;
-
+      --black:    #0F0F0F;
+      --gray-900: #1A1A1A;
+      --gray-800: #2C2C2C;
+      --gray-700: #404040;
+      --gray-600: #595959;
+      --gray-500: #737373;
+      --gray-400: #9A9A9A;
+      --gray-300: #BFBFBF;
+      --gray-200: #D9D9D9;
+      --gray-100: #EFEFEF;
+      --gray-50:  #F7F7F7;
+      --white:    #FFFFFF;
       --ff-display: 'DM Serif Display', Georgia, serif;
       --ff-body:    'DM Sans', sans-serif;
-
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-
-      --shadow-card: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
-      --shadow-hover: 0 4px 20px rgba(24,95,165,.14), 0 1px 4px rgba(0,0,0,.06);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 18px;
+      --shadow-card: 0 1px 2px rgba(0,0,0,.06), 0 3px 12px rgba(0,0,0,.07);
+      --shadow-hover: 0 4px 24px rgba(0,0,0,.13);
     }
-
-    /* ───────── RESET ───────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--ff-body);
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--gray-900);
-      background: #FAFAF8;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: var(--ff-body); font-size: 16px; line-height: 1.7; color: var(--gray-900); background: var(--white); -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
     ul { list-style: none; }
 
-    /* ───────── NAV ───────── */
+    .dot-bg {
+      background-image: radial-gradient(circle, #D0D0D0 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+    }
+
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(250,250,248,.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
-      padding: 0 6vw;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
+      background: rgba(255,255,255,.95); backdrop-filter: blur(10px);
+      border-bottom: 1px dotted var(--gray-300);
+      padding: 0 6vw; display: flex; align-items: center; justify-content: space-between; height: 58px;
     }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .nav-mark {
-      width: 28px; height: 28px;
-      background: var(--blue-700);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-mark { width: 28px; height: 28px; background: var(--black); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
     .nav-mark svg { width: 14px; height: 14px; }
-    .nav-name {
-      font-size: 14px; font-weight: 500; color: var(--gray-900);
-      letter-spacing: -.01em;
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 28px;
-    }
-    .nav-links a {
-      font-size: 13px; color: var(--gray-700);
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--blue-700); }
-    .nav-cta {
-      font-size: 13px; font-weight: 500;
-      background: var(--blue-700); color: white;
-      padding: 7px 16px; border-radius: var(--radius-sm);
-      transition: background .2s, transform .15s;
-    }
-    .nav-cta:hover { background: var(--blue-800); transform: translateY(-1px); }
+    .nav-name { font-size: 14px; font-weight: 500; color: var(--gray-900); letter-spacing: -.01em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 13px; color: var(--gray-600); transition: color .2s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta { font-size: 13px; font-weight: 500; background: var(--black); color: var(--white); padding: 7px 16px; border-radius: var(--radius-sm); border: 1px solid var(--black); transition: background .2s, transform .15s; }
+    .nav-cta:hover { background: var(--gray-800); transform: translateY(-1px); }
 
-    /* ───────── HERO ───────── */
-    .hero {
-      padding: 140px 6vw 100px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase;
-      color: var(--blue-700);
-      background: var(--blue-50);
-      padding: 5px 12px; border-radius: 20px;
-      margin-bottom: 20px;
-    }
-    .hero-eyebrow span { width: 6px; height: 6px; background: var(--blue-500); border-radius: 50%; }
-    .hero h1 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 4.5vw, 56px);
-      line-height: 1.1;
-      color: var(--gray-900);
-      letter-spacing: -.02em;
-      margin-bottom: 20px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--blue-700);
-    }
-    .hero-desc {
-      font-size: 16px; color: var(--gray-700); line-height: 1.75;
-      margin-bottom: 32px; max-width: 480px;
-    }
-    .hero-actions {
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .btn-primary {
-      font-size: 14px; font-weight: 500;
-      background: var(--blue-700); color: white;
-      padding: 12px 24px; border-radius: var(--radius-sm);
-      transition: background .2s, transform .15s, box-shadow .2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover {
-      background: var(--blue-800);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(24,95,165,.25);
-    }
-    .btn-secondary {
-      font-size: 14px; font-weight: 500; color: var(--gray-700);
-      padding: 12px 24px; border-radius: var(--radius-sm);
-      border: 1px solid var(--gray-200);
-      transition: border-color .2s, color .2s, transform .15s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-secondary:hover {
-      border-color: var(--blue-500); color: var(--blue-700);
-      transform: translateY(-2px);
-    }
-    /* Hero visual */
-    .hero-visual {
-      position: relative;
-    }
-    .hero-dashboard {
-      background: white;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-xl);
-      padding: 20px;
-      box-shadow: var(--shadow-card);
-      animation: float 5s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    .dash-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 16px;
-    }
+    /* HERO */
+    .hero-wrap { border-bottom: 1px dotted var(--gray-300); }
+    .hero { padding: 130px 6vw 90px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-600); border: 1px dotted var(--gray-400); padding: 5px 12px; border-radius: 20px; margin-bottom: 22px; }
+    .hero-eyebrow span { width: 5px; height: 5px; background: var(--gray-500); border-radius: 50%; }
+    .hero h1 { font-family: var(--ff-display); font-size: clamp(36px, 4.5vw, 56px); line-height: 1.1; color: var(--black); letter-spacing: -.02em; margin-bottom: 20px; }
+    .hero h1 em { font-style: italic; color: var(--gray-600); }
+    .hero-desc { font-size: 16px; color: var(--gray-600); line-height: 1.75; margin-bottom: 32px; max-width: 480px; }
+    .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { font-size: 14px; font-weight: 500; background: var(--black); color: var(--white); padding: 11px 22px; border-radius: var(--radius-sm); border: 1px solid var(--black); transition: background .2s, transform .15s, box-shadow .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: var(--gray-800); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.18); }
+    .btn-secondary { font-size: 14px; font-weight: 500; color: var(--gray-700); padding: 11px 22px; border-radius: var(--radius-sm); border: 1px dotted var(--gray-400); transition: border-color .2s, color .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-secondary:hover { border-color: var(--black); color: var(--black); transform: translateY(-2px); }
+
+    /* HERO DASHBOARD */
+    .hero-visual { position: relative; }
+    .hero-dashboard { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-xl); padding: 20px; box-shadow: var(--shadow-card); animation: float 5s ease-in-out infinite; position: relative; overflow: hidden; }
+    .hero-dashboard::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, #E0E0E0 1.2px, transparent 1.2px); background-size: 16px 16px; opacity: .5; pointer-events: none; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; position: relative; }
     .dash-title { font-size: 13px; font-weight: 500; color: var(--gray-900); }
-    .dash-badge {
-      font-size: 10px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase;
-      color: var(--green-700); background: var(--green-100);
-      padding: 3px 8px; border-radius: 20px;
-    }
-    .dash-kpis {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-      margin-bottom: 16px;
-    }
-    .dash-kpi {
-      background: var(--gray-100); border-radius: var(--radius-sm);
-      padding: 10px 12px;
-    }
-    .dash-kpi-label { font-size: 10px; color: var(--gray-400); margin-bottom: 2px; }
-    .dash-kpi-value { font-size: 18px; font-weight: 500; color: var(--gray-900); }
-    .dash-kpi-delta { font-size: 10px; color: var(--green-700); }
-    .dash-bars {
-      display: flex; align-items: flex-end; gap: 5px; height: 60px;
-      margin-bottom: 12px;
-    }
-    .dash-bar {
-      flex: 1; border-radius: 3px 3px 0 0; background: var(--blue-200);
-      transition: background .3s;
-    }
-    .dash-bar.hi { background: var(--blue-700); }
-    .dash-bar:hover { background: var(--blue-500); }
-    .dash-footer {
-      display: flex; align-items: center; gap: 10px;
-      padding-top: 12px; border-top: 1px solid var(--gray-100);
-    }
+    .dash-badge { font-size: 10px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--gray-700); background: var(--gray-100); border: 1px dotted var(--gray-400); padding: 3px 8px; border-radius: 20px; }
+    .dash-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 16px; position: relative; }
+    .dash-kpi { background: var(--gray-50); border: 1px dotted var(--gray-300); border-radius: var(--radius-sm); padding: 10px 12px; }
+    .dash-kpi-label { font-size: 10px; color: var(--gray-500); margin-bottom: 2px; }
+    .dash-kpi-value { font-size: 18px; font-weight: 500; color: var(--black); }
+    .dash-kpi-delta { font-size: 10px; }
+    .dash-kpi-delta.up { color: var(--gray-800); }
+    .dash-kpi-delta.dn { color: var(--gray-500); }
+    .dash-bars { display: flex; align-items: flex-end; gap: 5px; height: 60px; margin-bottom: 12px; position: relative; }
+    .dash-bar { flex: 1; border-radius: 2px 2px 0 0; background: var(--gray-300); }
+    .dash-bar.hi { background: var(--black); }
+    .dash-bar.mid { background: var(--gray-600); }
+    .dash-footer { display: flex; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px dotted var(--gray-200); position: relative; }
     .dash-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .dash-legend { font-size: 10px; color: var(--gray-400); }
-
-    /* Floating badges */
-    .hero-badge {
-      position: absolute;
-      background: white; border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      box-shadow: var(--shadow-card);
-      display: flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 500; color: var(--gray-900);
-      white-space: nowrap;
-      animation: float 5s ease-in-out infinite;
-    }
+    .dash-legend { font-size: 10px; color: var(--gray-500); }
+    .hero-badge { position: absolute; background: var(--white); border: 1px dotted var(--gray-400); border-radius: var(--radius-md); padding: 9px 14px; box-shadow: var(--shadow-card); display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: var(--gray-800); white-space: nowrap; animation: float 5s ease-in-out infinite; }
     .hero-badge.b1 { top: -18px; right: -24px; animation-delay: .8s; }
     .hero-badge.b2 { bottom: -14px; left: -20px; animation-delay: 1.6s; }
-    .badge-icon {
-      width: 24px; height: 24px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px;
-    }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--black); }
 
-    /* ───────── STATS STRIP ───────── */
-    .stats-strip {
-      background: var(--blue-700);
-      padding: 32px 6vw;
-    }
-    .stats-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 24px; text-align: center;
-    }
-    .stat-value {
-      font-family: var(--ff-display);
-      font-size: 36px; color: white;
-      line-height: 1;
-    }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,.65); margin-top: 6px; }
+    /* STATS STRIP */
+    .stats-strip { background: var(--black); border-top: 1px dotted var(--gray-700); border-bottom: 1px dotted var(--gray-700); padding: 32px 6vw; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat-item { text-align: center; padding: 0 16px; border-right: 1px dotted var(--gray-700); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: var(--ff-display); font-size: 36px; color: var(--white); line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--gray-400); margin-top: 6px; letter-spacing: .03em; }
 
-    /* ───────── SECTION SHARED ───────── */
-    section { padding: 96px 6vw; }
+    /* SECTIONS */
+    section { padding: 88px 6vw; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-eyebrow {
-      font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--blue-700); margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: var(--ff-display);
-      font-size: clamp(28px, 3vw, 40px);
-      line-height: 1.15; letter-spacing: -.02em;
-      color: var(--gray-900);
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 16px; color: var(--gray-700); line-height: 1.75;
-      max-width: 560px;
-    }
+    .section-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 10px; }
+    .section-title { font-family: var(--ff-display); font-size: clamp(28px, 3vw, 40px); line-height: 1.15; letter-spacing: -.02em; color: var(--black); margin-bottom: 16px; }
+    .section-desc { font-size: 16px; color: var(--gray-600); line-height: 1.75; max-width: 560px; }
     .section-header { margin-bottom: 48px; }
 
-    /* ───────── ABOUT ───────── */
-    #about { background: white; }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 72px; align-items: start;
-    }
-    .about-body { font-size: 16px; color: var(--gray-700); line-height: 1.8; }
+    /* ABOUT */
+    #about { background: var(--gray-50); border-top: 1px dotted var(--gray-300); border-bottom: 1px dotted var(--gray-300); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-body { font-size: 15px; color: var(--gray-600); line-height: 1.85; }
     .about-body p + p { margin-top: 16px; }
-    .skills-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-    }
-    .skill-card {
-      background: var(--gray-100);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-    .skill-card-title {
-      font-size: 13px; font-weight: 500; color: var(--gray-900);
-      margin-bottom: 6px;
-    }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skill-card { background: var(--white); border: 1px dotted var(--gray-300); border-radius: var(--radius-md); padding: 16px; }
+    .skill-card-title { font-size: 11px; font-weight: 500; color: var(--gray-700); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-    .skill-tag {
-      font-size: 11px; padding: 2px 8px; border-radius: 20px;
-      background: white; color: var(--gray-700);
-      border: 1px solid var(--gray-200);
-    }
+    .skill-tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--gray-100); color: var(--gray-700); border: 1px dotted var(--gray-300); }
 
-    /* ───────── PROJECTS ───────── */
-    #projects { background: #FAFAF8; }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-    }
-    .project-card {
-      background: white;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: transform .25s, box-shadow .25s;
-      display: flex; flex-direction: column;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-    }
-    .project-thumb {
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-thumb-bg {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    /* Mini chart previews using CSS */
-    .thumb-bars {
-      display: flex; align-items: flex-end; gap: 4px;
-      height: 90px; padding: 0 24px;
-    }
-    .thumb-bar {
-      flex: 1; border-radius: 3px 3px 0 0;
-      opacity: .85;
-    }
-    .thumb-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(255,255,255,.2) 0%, transparent 60%);
-    }
+    /* PROJECTS */
+    #projects { background: var(--white); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+    .project-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); transition: transform .25s, box-shadow .25s, border-color .25s; display: flex; flex-direction: column; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--gray-400); }
+    .project-thumb { height: 170px; position: relative; overflow: hidden; }
+    .project-thumb-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .project-thumb-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,.3) 1.2px, transparent 1.2px); background-size: 14px 14px; }
+    .thumb-bars { display: flex; align-items: flex-end; gap: 5px; height: 90px; padding: 0 28px; position: relative; z-index: 1; }
+    .thumb-bar { flex: 1; border-radius: 2px 2px 0 0; }
+    .thumb-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.12) 0%, transparent 60%); }
     .project-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
-    .project-domain {
-      font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .project-name {
-      font-size: 17px; font-weight: 500; color: var(--gray-900);
-      letter-spacing: -.01em; margin-bottom: 8px; line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 14px; color: var(--gray-700); line-height: 1.65;
-      flex: 1; margin-bottom: 18px;
-    }
-    .project-footer {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .project-tag {
-      font-size: 11px; padding: 3px 9px; border-radius: 20px;
-      background: var(--gray-100); color: var(--gray-700);
-    }
-    .project-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 13px; font-weight: 500; color: var(--blue-700);
-      padding: 7px 14px; border-radius: var(--radius-sm);
-      border: 1px solid var(--blue-200);
-      background: var(--blue-50);
-      transition: background .2s, border-color .2s, transform .15s;
-      white-space: nowrap;
-    }
-    .project-link:hover {
-      background: var(--blue-700); color: white;
-      border-color: var(--blue-700);
-      transform: translateY(-1px);
-    }
-    .project-link svg { width: 13px; height: 13px; }
-
-    /* placeholder card */
-    .project-card.placeholder {
-      border-style: dashed; border-color: var(--gray-200);
-      box-shadow: none; background: transparent;
-      align-items: center; justify-content: center;
-      min-height: 340px;
-      opacity: .6;
-    }
+    .project-domain { font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 7px; }
+    .project-name { font-size: 16px; font-weight: 500; color: var(--black); letter-spacing: -.01em; margin-bottom: 8px; line-height: 1.3; }
+    .project-desc { font-size: 14px; color: var(--gray-600); line-height: 1.65; flex: 1; margin-bottom: 18px; }
+    .project-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px dotted var(--gray-200); padding-top: 14px; }
+    .project-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .project-tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--gray-100); color: var(--gray-600); border: 1px dotted var(--gray-300); }
+    .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--black); padding: 6px 14px; border-radius: var(--radius-sm); border: 1px solid var(--black); background: var(--white); transition: background .2s, color .2s, transform .15s; white-space: nowrap; flex-shrink: 0; }
+    .project-link:hover { background: var(--black); color: var(--white); transform: translateY(-1px); }
+    .project-link svg { width: 12px; height: 12px; }
+    .project-card.placeholder { border: 1px dotted var(--gray-300); box-shadow: none; background: var(--gray-50); align-items: center; justify-content: center; min-height: 320px; }
     .placeholder-inner { text-align: center; padding: 32px; }
-    .placeholder-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: var(--gray-100);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 14px;
-    }
-    .placeholder-title { font-size: 14px; font-weight: 500; color: var(--gray-700); margin-bottom: 6px; }
-    .placeholder-desc { font-size: 13px; color: var(--gray-400); }
+    .placeholder-icon { width: 44px; height: 44px; border-radius: var(--radius-md); border: 1px dotted var(--gray-300); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; background: var(--white); }
+    .placeholder-title { font-size: 13px; font-weight: 500; color: var(--gray-600); margin-bottom: 5px; }
+    .placeholder-desc { font-size: 12px; color: var(--gray-400); }
 
-    /* ───────── CONTACT ───────── */
-    #contact { background: white; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 72px; align-items: start;
-    }
-    .contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-    .contact-link {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 20px; border-radius: var(--radius-md);
-      border: 1px solid var(--gray-200);
-      background: var(--gray-100);
-      transition: border-color .2s, background .2s, transform .15s;
-    }
-    .contact-link:hover {
-      border-color: var(--blue-200);
-      background: var(--blue-50);
-      transform: translateX(4px);
-    }
-    .contact-link-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: white; border: 1px solid var(--gray-200);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+    /* CONTACT */
+    #contact { background: var(--gray-50); border-top: 1px dotted var(--gray-300); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+    .contact-link { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: var(--radius-md); border: 1px dotted var(--gray-300); background: var(--white); transition: border-color .2s, transform .15s; }
+    .contact-link:hover { border-color: var(--black); transform: translateX(4px); }
+    .contact-link-icon { width: 34px; height: 34px; border-radius: var(--radius-sm); background: var(--gray-100); border: 1px dotted var(--gray-300); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contact-link-text { font-size: 14px; font-weight: 500; color: var(--gray-900); }
-    .contact-link-sub { font-size: 12px; color: var(--gray-400); }
-
-    /* contact form */
-    .contact-form { display: flex; flex-direction: column; gap: 14px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-size: 12px; font-weight: 500; color: var(--gray-700); }
-    .form-input, .form-textarea {
-      font-family: var(--ff-body); font-size: 14px;
-      color: var(--gray-900);
-      background: white; border: 1px solid var(--gray-200);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--blue-500);
-      box-shadow: 0 0 0 3px rgba(55,138,221,.12);
-    }
+    .contact-link-sub { font-size: 12px; color: var(--gray-500); }
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-label { font-size: 11px; font-weight: 500; color: var(--gray-600); text-transform: uppercase; letter-spacing: .05em; }
+    .form-input, .form-textarea { font-family: var(--ff-body); font-size: 14px; color: var(--gray-900); background: var(--white); border: 1px dotted var(--gray-400); border-radius: var(--radius-sm); padding: 10px 13px; outline: none; transition: border-color .2s, box-shadow .2s; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--black); border-style: solid; box-shadow: 0 0 0 3px rgba(0,0,0,.07); }
     .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-    .form-submit {
-      font-family: var(--ff-body); font-size: 14px; font-weight: 500;
-      background: var(--blue-700); color: white;
-      border: none; cursor: pointer;
-      padding: 12px 24px; border-radius: var(--radius-sm);
-      width: 100%;
-      transition: background .2s, transform .15s;
-    }
-    .form-submit:hover { background: var(--blue-800); transform: translateY(-1px); }
+    .form-submit { font-family: var(--ff-body); font-size: 14px; font-weight: 500; background: var(--black); color: var(--white); border: none; cursor: pointer; padding: 12px 24px; border-radius: var(--radius-sm); width: 100%; transition: background .2s, transform .15s; }
+    .form-submit:hover { background: var(--gray-800); transform: translateY(-1px); }
 
-    /* ───────── FOOTER ───────── */
-    footer {
-      background: var(--gray-900); color: rgba(255,255,255,.5);
-      padding: 40px 6vw;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-    }
-    .footer-brand {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
-    }
-    .footer-mark {
-      width: 24px; height: 24px; background: var(--blue-700);
-      border-radius: 5px;
-    }
-    footer p { font-size: 13px; }
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px dotted var(--gray-700); padding: 36px 6vw; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; color: var(--gray-300); font-size: 14px; font-weight: 500; }
+    .footer-mark { width: 22px; height: 22px; background: var(--gray-700); border-radius: var(--radius-sm); }
+    footer p { font-size: 13px; color: var(--gray-600); }
 
-    /* ───────── UTILITY ───────── */
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
-
-    /* ───────── ANIMATIONS ───────── */
-    .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .fade-up.visible { opacity: 1; transform: none; }
 
-    /* ───────── RESPONSIVE ───────── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 100px; }
+      .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 96px; }
       .hero-visual { display: none; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-item { padding: 12px 0; border-right: none; border-bottom: 1px dotted var(--gray-700); }
+      .stat-item:last-child { border-bottom: none; }
       .form-row { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
     @media (max-width: 560px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .projects-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
     }
@@ -506,14 +202,13 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="nav-brand">
       <div class="nav-mark">
         <svg viewBox="0 0 14 14" fill="none">
           <rect x="1" y="7" width="3" height="6" rx="1" fill="white"/>
-          <rect x="5.5" y="4" width="3" height="9" rx="1" fill="rgba(255,255,255,.7)"/>
-          <rect x="10" y="1" width="3" height="12" rx="1" fill="rgba(255,255,255,.5)"/>
+          <rect x="5.5" y="4" width="3" height="9" rx="1" fill="rgba(255,255,255,.65)"/>
+          <rect x="10" y="1" width="3" height="12" rx="1" fill="rgba(255,255,255,.4)"/>
         </svg>
       </div>
       <span class="nav-name">Your Name · Analytics</span>
@@ -526,23 +221,18 @@
     <a href="#projects" class="nav-cta">View projects →</a>
   </nav>
 
-  <!-- HERO -->
-  <section style="padding: 0;">
+  <div class="hero-wrap dot-bg">
     <div class="hero">
       <div class="hero-content fade-up">
         <div class="hero-eyebrow"><span></span> Business Intelligence &amp; Analytics</div>
         <h1>Turning data into <em>decisions</em> that matter</h1>
-        <p class="hero-desc">
-          I build Power BI dashboards and analytical reports that help organizations understand their data clearly — across finance, operations, sales, and beyond.
-        </p>
+        <p class="hero-desc">I build Power BI dashboards and analytical reports that help organizations understand their data clearly — across finance, operations, sales, and beyond.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">
             Explore projects
-            <svg viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#contact" class="btn-secondary">
-            Get in touch
-          </a>
+          <a href="#contact" class="btn-secondary">Get in touch</a>
         </div>
       </div>
       <div class="hero-visual fade-up" style="transition-delay:.15s">
@@ -552,75 +242,43 @@
             <span class="dash-badge">Live</span>
           </div>
           <div class="dash-kpis">
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Revenue</div>
-              <div class="dash-kpi-value">$4.2M</div>
-              <div class="dash-kpi-delta">↑ 12.4%</div>
-            </div>
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Margin</div>
-              <div class="dash-kpi-value">38%</div>
-              <div class="dash-kpi-delta">↑ 1.8pp</div>
-            </div>
-            <div class="dash-kpi">
-              <div class="dash-kpi-label">Customers</div>
-              <div class="dash-kpi-value">2,340</div>
-              <div class="dash-kpi-delta" style="color:var(--red-700)">↓ 3.2%</div>
-            </div>
+            <div class="dash-kpi"><div class="dash-kpi-label">Revenue</div><div class="dash-kpi-value">$4.2M</div><div class="dash-kpi-delta up">↑ 12.4%</div></div>
+            <div class="dash-kpi"><div class="dash-kpi-label">Margin</div><div class="dash-kpi-value">38%</div><div class="dash-kpi-delta up">↑ 1.8pp</div></div>
+            <div class="dash-kpi"><div class="dash-kpi-label">Customers</div><div class="dash-kpi-value">2,340</div><div class="dash-kpi-delta dn">↓ 3.2%</div></div>
           </div>
           <div class="dash-bars">
-            <div class="dash-bar" style="height:45%"></div>
-            <div class="dash-bar" style="height:58%"></div>
-            <div class="dash-bar" style="height:50%"></div>
-            <div class="dash-bar" style="height:72%"></div>
-            <div class="dash-bar" style="height:65%"></div>
-            <div class="dash-bar hi" style="height:88%"></div>
-            <div class="dash-bar hi" style="height:80%"></div>
-            <div class="dash-bar hi" style="height:95%"></div>
+            <div class="dash-bar" style="height:42%"></div>
+            <div class="dash-bar" style="height:56%"></div>
+            <div class="dash-bar" style="height:48%"></div>
+            <div class="dash-bar mid" style="height:70%"></div>
+            <div class="dash-bar mid" style="height:63%"></div>
+            <div class="dash-bar hi" style="height:85%"></div>
+            <div class="dash-bar hi" style="height:78%"></div>
+            <div class="dash-bar hi" style="height:93%"></div>
             <div class="dash-bar hi" style="height:100%"></div>
           </div>
           <div class="dash-footer">
-            <div class="dash-dot" style="background:var(--blue-700)"></div>
+            <div class="dash-dot" style="background:var(--black)"></div>
             <span class="dash-legend">Revenue 2024</span>
-            <div class="dash-dot" style="background:var(--blue-200); margin-left:8px"></div>
+            <div class="dash-dot" style="background:var(--gray-300);margin-left:8px"></div>
             <span class="dash-legend">Target</span>
           </div>
         </div>
-        <div class="hero-badge b1">
-          <div class="badge-icon" style="background:var(--green-100)">📈</div>
-          Power BI Certified
-        </div>
-        <div class="hero-badge b2">
-          <div class="badge-icon" style="background:var(--blue-50)">⚡</div>
-          DAX · SQL · Python
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS STRIP -->
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="fade-up">
-        <div class="stat-value">6+</div>
-        <div class="stat-label">Portfolio projects</div>
-      </div>
-      <div class="fade-up" style="transition-delay:.1s">
-        <div class="stat-value">4</div>
-        <div class="stat-label">Business domains</div>
-      </div>
-      <div class="fade-up" style="transition-delay:.2s">
-        <div class="stat-value">30+</div>
-        <div class="stat-label">Interactive visuals</div>
-      </div>
-      <div class="fade-up" style="transition-delay:.3s">
-        <div class="stat-value">100%</div>
-        <div class="stat-label">Real datasets</div>
+        <div class="hero-badge b1"><div class="badge-dot"></div>Power BI Certified</div>
+        <div class="hero-badge b2"><div class="badge-dot"></div>DAX · SQL · Python</div>
       </div>
     </div>
   </div>
 
-  <!-- ABOUT -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item fade-up"><div class="stat-value">6+</div><div class="stat-label">Portfolio projects</div></div>
+      <div class="stat-item fade-up" style="transition-delay:.1s"><div class="stat-value">4</div><div class="stat-label">Business domains</div></div>
+      <div class="stat-item fade-up" style="transition-delay:.2s"><div class="stat-value">30+</div><div class="stat-label">Interactive visuals</div></div>
+      <div class="stat-item fade-up" style="transition-delay:.3s"><div class="stat-value">100%</div><div class="stat-label">Real datasets</div></div>
+    </div>
+  </div>
+
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
@@ -628,7 +286,6 @@
           <div class="section-eyebrow">About me</div>
           <h2 class="section-title">Analytics professional with a passion for clarity</h2>
           <div class="about-body">
-            <!-- ✏️ EDIT: Replace with your own bio -->
             <p>I'm a data analyst and BI developer with experience turning complex, multi-source datasets into clean, actionable dashboards. I specialize in Power BI — from data modelling and DAX to layout design and report storytelling.</p>
             <p>This portfolio showcases projects across general analytics, finance, sales, and operations. Each report is built with a real dataset, a clear business question, and an intentional visual design.</p>
             <p>When I'm not building reports, I'm exploring new ways to bridge the gap between raw data and executive decision-making.</p>
@@ -637,44 +294,25 @@
         <div class="skills-grid fade-up" style="transition-delay:.15s">
           <div class="skill-card">
             <div class="skill-card-title">BI & Visualization</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Power BI</span>
-              <span class="skill-tag">DAX</span>
-              <span class="skill-tag">Power Query</span>
-              <span class="skill-tag">Report design</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">DAX</span><span class="skill-tag">Power Query</span><span class="skill-tag">Report design</span></div>
           </div>
           <div class="skill-card">
             <div class="skill-card-title">Data & Querying</div>
-            <div class="skill-tags">
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">T-SQL</span>
-              <span class="skill-tag">Data modelling</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">SQL</span><span class="skill-tag">T-SQL</span><span class="skill-tag">Data modelling</span></div>
           </div>
           <div class="skill-card">
             <div class="skill-card-title">Analysis</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Excel</span>
-              <span class="skill-tag">Statistics</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Excel</span><span class="skill-tag">Statistics</span></div>
           </div>
           <div class="skill-card">
             <div class="skill-card-title">Domains</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Finance</span>
-              <span class="skill-tag">Sales</span>
-              <span class="skill-tag">Operations</span>
-              <span class="skill-tag">HR</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">Finance</span><span class="skill-tag">Sales</span><span class="skill-tag">Operations</span><span class="skill-tag">HR</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-inner">
       <div class="section-header fade-up">
@@ -682,116 +320,93 @@
         <h2 class="section-title">Power BI projects</h2>
         <p class="section-desc">Each project links directly to a live report in Power BI Service. Click to explore the interactive dashboard.</p>
       </div>
-
       <div class="projects-grid">
 
-        <!-- ✏️ PROJECT 1 — Edit title, description, tags, and href -->
         <div class="project-card fade-up">
           <div class="project-thumb">
-            <div class="project-thumb-bg" style="background: linear-gradient(135deg, #E6F1FB 0%, #B5D4F4 100%);">
+            <div class="project-thumb-bg" style="background:linear-gradient(135deg,#2C2C2C 0%,#595959 100%);">
+              <div class="project-thumb-dots"></div>
               <div class="thumb-bars">
-                <div class="thumb-bar" style="height:40%;background:#185FA5"></div>
-                <div class="thumb-bar" style="height:65%;background:#185FA5"></div>
-                <div class="thumb-bar" style="height:50%;background:#378ADD"></div>
-                <div class="thumb-bar" style="height:80%;background:#185FA5"></div>
-                <div class="thumb-bar" style="height:70%;background:#378ADD"></div>
-                <div class="thumb-bar" style="height:95%;background:#0C447C"></div>
-                <div class="thumb-bar" style="height:60%;background:#378ADD"></div>
+                <div class="thumb-bar" style="height:40%;background:rgba(255,255,255,.3)"></div>
+                <div class="thumb-bar" style="height:65%;background:rgba(255,255,255,.5)"></div>
+                <div class="thumb-bar" style="height:50%;background:rgba(255,255,255,.35)"></div>
+                <div class="thumb-bar" style="height:80%;background:rgba(255,255,255,.7)"></div>
+                <div class="thumb-bar" style="height:70%;background:rgba(255,255,255,.5)"></div>
+                <div class="thumb-bar" style="height:95%;background:white"></div>
+                <div class="thumb-bar" style="height:60%;background:rgba(255,255,255,.5)"></div>
               </div>
             </div>
             <div class="thumb-overlay"></div>
           </div>
           <div class="project-body">
-            <div class="project-domain" style="color:var(--blue-700)">Finance</div>
+            <div class="project-domain">Finance</div>
             <div class="project-name">Financial Performance Dashboard</div>
             <p class="project-desc">P&amp;L analysis, margin tracking, and YoY revenue comparisons across business units. Includes scenario toggle for budget vs actuals.</p>
             <div class="project-footer">
-              <div class="project-tags">
-                <span class="project-tag">DAX</span>
-                <span class="project-tag">YTD</span>
-                <span class="project-tag">Waterfall</span>
-              </div>
-              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">
-                Open report
-                <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+              <div class="project-tags"><span class="project-tag">DAX</span><span class="project-tag">YTD</span><span class="project-tag">Waterfall</span></div>
+              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">Open report <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
           </div>
         </div>
 
-        <!-- ✏️ PROJECT 2 -->
         <div class="project-card fade-up" style="transition-delay:.08s">
           <div class="project-thumb">
-            <div class="project-thumb-bg" style="background: linear-gradient(135deg, #EAF3DE 0%, #C0DD97 100%);">
+            <div class="project-thumb-bg" style="background:linear-gradient(135deg,#404040 0%,#737373 100%);">
+              <div class="project-thumb-dots"></div>
               <div class="thumb-bars">
-                <div class="thumb-bar" style="height:55%;background:#3B6D11"></div>
-                <div class="thumb-bar" style="height:75%;background:#639922"></div>
-                <div class="thumb-bar" style="height:60%;background:#3B6D11"></div>
-                <div class="thumb-bar" style="height:90%;background:#3B6D11"></div>
-                <div class="thumb-bar" style="height:45%;background:#97C459"></div>
-                <div class="thumb-bar" style="height:70%;background:#639922"></div>
-                <div class="thumb-bar" style="height:85%;background:#3B6D11"></div>
+                <div class="thumb-bar" style="height:55%;background:rgba(255,255,255,.4)"></div>
+                <div class="thumb-bar" style="height:75%;background:rgba(255,255,255,.6)"></div>
+                <div class="thumb-bar" style="height:60%;background:rgba(255,255,255,.4)"></div>
+                <div class="thumb-bar" style="height:90%;background:white"></div>
+                <div class="thumb-bar" style="height:45%;background:rgba(255,255,255,.4)"></div>
+                <div class="thumb-bar" style="height:70%;background:rgba(255,255,255,.6)"></div>
+                <div class="thumb-bar" style="height:85%;background:rgba(255,255,255,.75)"></div>
               </div>
             </div>
             <div class="thumb-overlay"></div>
           </div>
           <div class="project-body">
-            <div class="project-domain" style="color:var(--green-700)">Sales</div>
+            <div class="project-domain">Sales</div>
             <div class="project-name">Sales Performance Report</div>
             <p class="project-desc">Territory breakdown, rep-level targets vs actuals, pipeline funnel, and product mix analysis with dynamic slicer filtering.</p>
             <div class="project-footer">
-              <div class="project-tags">
-                <span class="project-tag">Funnel</span>
-                <span class="project-tag">KPIs</span>
-                <span class="project-tag">Geo map</span>
-              </div>
-              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">
-                Open report
-                <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+              <div class="project-tags"><span class="project-tag">Funnel</span><span class="project-tag">KPIs</span><span class="project-tag">Geo map</span></div>
+              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">Open report <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
           </div>
         </div>
 
-        <!-- ✏️ PROJECT 3 -->
         <div class="project-card fade-up" style="transition-delay:.16s">
           <div class="project-thumb">
-            <div class="project-thumb-bg" style="background: linear-gradient(135deg, #FAEEDA 0%, #FAC775 100%);">
+            <div class="project-thumb-bg" style="background:linear-gradient(135deg,#1A1A1A 0%,#404040 100%);">
+              <div class="project-thumb-dots"></div>
               <div class="thumb-bars">
-                <div class="thumb-bar" style="height:70%;background:#854F0B"></div>
-                <div class="thumb-bar" style="height:50%;background:#EF9F27"></div>
-                <div class="thumb-bar" style="height:85%;background:#854F0B"></div>
-                <div class="thumb-bar" style="height:60%;background:#BA7517"></div>
-                <div class="thumb-bar" style="height:40%;background:#EF9F27"></div>
-                <div class="thumb-bar" style="height:78%;background:#854F0B"></div>
-                <div class="thumb-bar" style="height:92%;background:#633806"></div>
+                <div class="thumb-bar" style="height:70%;background:rgba(255,255,255,.55)"></div>
+                <div class="thumb-bar" style="height:50%;background:rgba(255,255,255,.35)"></div>
+                <div class="thumb-bar" style="height:85%;background:rgba(255,255,255,.7)"></div>
+                <div class="thumb-bar" style="height:60%;background:rgba(255,255,255,.45)"></div>
+                <div class="thumb-bar" style="height:40%;background:rgba(255,255,255,.3)"></div>
+                <div class="thumb-bar" style="height:78%;background:rgba(255,255,255,.6)"></div>
+                <div class="thumb-bar" style="height:95%;background:white"></div>
               </div>
             </div>
             <div class="thumb-overlay"></div>
           </div>
           <div class="project-body">
-            <div class="project-domain" style="color:var(--amber-700)">Operations</div>
+            <div class="project-domain">Operations</div>
             <div class="project-name">Supply Chain &amp; Inventory</div>
             <p class="project-desc">Stock level monitoring, supplier lead times, reorder alerts, and fulfillment rate trends across warehouse locations.</p>
             <div class="project-footer">
-              <div class="project-tags">
-                <span class="project-tag">Inventory</span>
-                <span class="project-tag">Alerts</span>
-                <span class="project-tag">Trend</span>
-              </div>
-              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">
-                Open report
-                <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
+              <div class="project-tags"><span class="project-tag">Inventory</span><span class="project-tag">Alerts</span><span class="project-tag">Trend</span></div>
+              <a href="YOUR_POWER_BI_LINK_HERE" target="_blank" rel="noopener" class="project-link">Open report <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
           </div>
         </div>
 
-        <!-- Placeholder cards -->
         <div class="project-card placeholder fade-up" style="transition-delay:.24s">
           <div class="placeholder-inner">
             <div class="placeholder-icon">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="11" width="3" height="8" rx="1" fill="var(--gray-400)"/><rect x="9" y="7" width="3" height="12" rx="1" fill="var(--gray-200)"/><rect x="15" y="3" width="3" height="16" rx="1" fill="var(--gray-200)"/></svg>
+              <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="3" y="11" width="3" height="8" rx="1" fill="var(--gray-400)"/><rect x="9" y="7" width="3" height="12" rx="1" fill="var(--gray-300)"/><rect x="15" y="3" width="3" height="16" rx="1" fill="var(--gray-200)"/></svg>
             </div>
             <div class="placeholder-title">Project coming soon</div>
             <div class="placeholder-desc">Next subproject in progress</div>
@@ -802,7 +417,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
       <div class="contact-grid">
@@ -812,55 +426,27 @@
           <p class="section-desc">Open to freelance projects, full-time roles, and collaborations. Reach out through any of these channels.</p>
           <div class="contact-links">
             <a href="https://linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--blue-700)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="var(--blue-700)"/></svg>
-              </div>
-              <div>
-                <div class="contact-link-text">LinkedIn</div>
-                <div class="contact-link-sub">linkedin.com/in/your-handle</div>
-              </div>
+              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gray-700)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="var(--gray-700)"/></svg></div>
+              <div><div class="contact-link-text">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/your-handle</div></div>
             </a>
             <a href="mailto:your@email.com" class="contact-link">
-              <div class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div>
-                <div class="contact-link-text">Email</div>
-                <div class="contact-link-sub">your@email.com</div>
-              </div>
+              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><div class="contact-link-text">Email</div><div class="contact-link-sub">your@email.com</div></div>
             </a>
             <a href="https://github.com/YOUR-HANDLE" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--gray-700)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <div>
-                <div class="contact-link-text">GitHub</div>
-                <div class="contact-link-sub">github.com/your-handle</div>
-              </div>
+              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gray-700)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
+              <div><div class="contact-link-text">GitHub</div><div class="contact-link-sub">github.com/your-handle</div></div>
             </a>
           </div>
         </div>
-
         <div class="fade-up" style="transition-delay:.15s">
           <div class="contact-form">
             <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="fname">First name</label>
-                <input class="form-input" id="fname" type="text" placeholder="Jane" />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="lname">Last name</label>
-                <input class="form-input" id="lname" type="text" placeholder="Smith" />
-              </div>
+              <div class="form-group"><label class="form-label" for="fname">First name</label><input class="form-input" id="fname" type="text" placeholder="Jane" /></div>
+              <div class="form-group"><label class="form-label" for="lname">Last name</label><input class="form-input" id="lname" type="text" placeholder="Smith" /></div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-input" id="email" type="email" placeholder="jane@company.com" />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" placeholder="Tell me about your project or opportunity…"></textarea>
-            </div>
+            <div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" type="email" placeholder="jane@company.com" /></div>
+            <div class="form-group"><label class="form-label" for="message">Message</label><textarea class="form-textarea" id="message" placeholder="Tell me about your project or opportunity…"></textarea></div>
             <button class="form-submit" onclick="handleSubmit(event)">Send message</button>
           </div>
         </div>
@@ -868,39 +454,25 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-mark"></div>
-        Your Name · Analytics Portfolio
-      </div>
+      <div class="footer-brand"><div class="footer-mark"></div>Your Name · Analytics Portfolio</div>
       <p>Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
     </div>
   </footer>
 
   <script>
-    // Scroll-triggered fade-in
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Contact form (static — wire to Formspree or EmailJS for real sends)
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target;
       btn.textContent = 'Message sent ✓';
-      btn.style.background = 'var(--green-700)';
-      setTimeout(() => {
-        btn.textContent = 'Send message';
-        btn.style.background = '';
-      }, 3000);
+      btn.style.background = 'var(--gray-700)';
+      setTimeout(() => { btn.textContent = 'Send message'; btn.style.background = ''; }, 3000);
     }
   </script>
 </body>
