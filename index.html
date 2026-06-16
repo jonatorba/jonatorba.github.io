@@ -61,8 +61,9 @@
     /* HERO */
     .hero-wrap { border-bottom: 1px dotted var(--gray-300); }
     .hero { padding: 130px 6vw 90px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-600); border: 1px dotted var(--gray-400); padding: 5px 12px; border-radius: 20px; margin-bottom: 22px; }
-    .hero-eyebrow span { width: 5px; height: 5px; background: var(--gray-500); border-radius: 50%; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-600); border: 1px dotted var(--gray-400); padding: 5px 12px; border-radius: 20px; }
+    .hero-tag::before { content: ''; width: 5px; height: 5px; background: var(--gray-500); border-radius: 50%; }
     .hero h1 { font-family: var(--ff-display); font-size: clamp(36px, 4.5vw, 56px); line-height: 1.1; color: var(--black); letter-spacing: -.02em; margin-bottom: 20px; }
     .hero h1 em { font-style: italic; color: var(--gray-600); }
     .hero-desc { font-size: 16px; color: var(--gray-600); line-height: 1.75; margin-bottom: 32px; max-width: 480px; }
@@ -115,17 +116,6 @@
     .section-desc { font-size: 16px; color: var(--gray-600); line-height: 1.75; max-width: 560px; }
     .section-header { margin-bottom: 48px; }
 
-    /* ABOUT */
-    #about { background: var(--gray-50); border-top: 1px dotted var(--gray-300); border-bottom: 1px dotted var(--gray-300); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-    .about-body { font-size: 15px; color: var(--gray-600); line-height: 1.85; }
-    .about-body p + p { margin-top: 16px; }
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .skill-card { background: var(--white); border: 1px dotted var(--gray-300); border-radius: var(--radius-md); padding: 16px; }
-    .skill-card-title { font-size: 11px; font-weight: 500; color: var(--gray-700); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-    .skill-tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--gray-100); color: var(--gray-700); border: 1px dotted var(--gray-300); }
-
     /* PROJECTS */
     #projects { background: var(--white); }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
@@ -153,25 +143,6 @@
     .placeholder-title { font-size: 13px; font-weight: 500; color: var(--gray-600); margin-bottom: 5px; }
     .placeholder-desc { font-size: 12px; color: var(--gray-400); }
 
-    /* CONTACT */
-    #contact { background: var(--gray-50); border-top: 1px dotted var(--gray-300); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-    .contact-links { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
-    .contact-link { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: var(--radius-md); border: 1px dotted var(--gray-300); background: var(--white); transition: border-color .2s, transform .15s; }
-    .contact-link:hover { border-color: var(--black); transform: translateX(4px); }
-    .contact-link-icon { width: 34px; height: 34px; border-radius: var(--radius-sm); background: var(--gray-100); border: 1px dotted var(--gray-300); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-link-text { font-size: 14px; font-weight: 500; color: var(--gray-900); }
-    .contact-link-sub { font-size: 12px; color: var(--gray-500); }
-    .contact-form { display: flex; flex-direction: column; gap: 12px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-    .form-label { font-size: 11px; font-weight: 500; color: var(--gray-600); text-transform: uppercase; letter-spacing: .05em; }
-    .form-input, .form-textarea { font-family: var(--ff-body); font-size: 14px; color: var(--gray-900); background: var(--white); border: 1px dotted var(--gray-400); border-radius: var(--radius-sm); padding: 10px 13px; outline: none; transition: border-color .2s, box-shadow .2s; }
-    .form-input:focus, .form-textarea:focus { border-color: var(--black); border-style: solid; box-shadow: 0 0 0 3px rgba(0,0,0,.07); }
-    .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-    .form-submit { font-family: var(--ff-body); font-size: 14px; font-weight: 500; background: var(--black); color: var(--white); border: none; cursor: pointer; padding: 12px 24px; border-radius: var(--radius-sm); width: 100%; transition: background .2s, transform .15s; }
-    .form-submit:hover { background: var(--gray-800); transform: translateY(-1px); }
-
     /* FOOTER */
     footer { background: var(--black); border-top: 1px dotted var(--gray-700); padding: 36px 6vw; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -187,16 +158,13 @@
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 96px; }
       .hero-visual { display: none; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .stats-inner { grid-template-columns: repeat(2,1fr); }
       .stat-item { padding: 12px 0; border-right: none; border-bottom: 1px dotted var(--gray-700); }
       .stat-item:last-child { border-bottom: none; }
-      .form-row { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
     @media (max-width: 560px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -214,25 +182,27 @@
       <span class="nav-name">Jonathan Ormeno · Business Analytics</span>
     </div>
     <div class="nav-links">
-      <a href="#about">About</a>
+      <a href="#home">Home</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
     </div>
     <a href="#projects" class="nav-cta">View projects →</a>
   </nav>
 
-  <div class="hero-wrap dot-bg">
+  <div id="home" class="hero-wrap dot-bg">
     <div class="hero">
       <div class="hero-content fade-up">
-        <div class="hero-eyebrow"><span></span> Business Analytics</div>
-        <h1>Turning data into <em>decisions</em> that matter</h1>
-        <p class="hero-desc">I build Power BI dashboards and analytical reports that help organizations understand their data clearly — across finance, operations, sales, and beyond.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Business Analytics</span>
+          <span class="hero-tag">Data Science</span>
+          <span class="hero-tag">Data Engineering</span>
+        </div>
+        <h1>A portfolio shaped by years of <em>hands-on experience</em></h1>
+        <p class="hero-desc">With a background rooted in Finance and Business Analysis, I help organizations turn complex data into clear, confident decisions. From financial reporting to operational insight, I design Power BI solutions across analytics, data science, and data engineering — making information easy to understand and act on.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">
             Explore projects
             <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#contact" class="btn-secondary">Get in touch</a>
         </div>
       </div>
       <div class="hero-visual fade-up" style="transition-delay:.15s">
@@ -278,40 +248,6 @@
       <div class="stat-item fade-up" style="transition-delay:.3s"><div class="stat-value">100%</div><div class="stat-label">Real datasets</div></div>
     </div>
   </div>
-
-  <section id="about">
-    <div class="section-inner">
-      <div class="about-grid">
-        <div class="fade-up">
-          <div class="section-eyebrow">About me</div>
-          <h2 class="section-title">Analytics professional with a passion for clarity</h2>
-          <div class="about-body">
-            <p>I'm a data analyst and BI developer with experience turning complex, multi-source datasets into clean, actionable dashboards. I specialize in Power BI — from data modelling and DAX to layout design and report storytelling.</p>
-            <p>This portfolio showcases projects across general analytics, finance, sales, and operations. Each report is built with a real dataset, a clear business question, and an intentional visual design.</p>
-            <p>When I'm not building reports, I'm exploring new ways to bridge the gap between raw data and executive decision-making.</p>
-          </div>
-        </div>
-        <div class="skills-grid fade-up" style="transition-delay:.15s">
-          <div class="skill-card">
-            <div class="skill-card-title">BI & Visualization</div>
-            <div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">DAX</span><span class="skill-tag">Power Query</span><span class="skill-tag">Report design</span></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card-title">Data & Querying</div>
-            <div class="skill-tags"><span class="skill-tag">SQL</span><span class="skill-tag">T-SQL</span><span class="skill-tag">Data modelling</span></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card-title">Analysis</div>
-            <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Excel</span><span class="skill-tag">Statistics</span></div>
-          </div>
-          <div class="skill-card">
-            <div class="skill-card-title">Domains</div>
-            <div class="skill-tags"><span class="skill-tag">Finance</span><span class="skill-tag">Sales</span><span class="skill-tag">Operations</span><span class="skill-tag">HR</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="projects">
     <div class="section-inner">
@@ -417,46 +353,9 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="section-inner">
-      <div class="contact-grid">
-        <div class="fade-up">
-          <div class="section-eyebrow">Contact</div>
-          <h2 class="section-title">Let's connect</h2>
-          <p class="section-desc">Open to freelance projects, full-time roles, and collaborations. Reach out through any of these channels.</p>
-          <div class="contact-links">
-            <a href="https://linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gray-700)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="var(--gray-700)"/></svg></div>
-              <div><div class="contact-link-text">LinkedIn</div><div class="contact-link-sub">linkedin.com/in/your-handle</div></div>
-            </a>
-            <a href="mailto:your@email.com" class="contact-link">
-              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-              <div><div class="contact-link-text">Email</div><div class="contact-link-sub">your@email.com</div></div>
-            </a>
-            <a href="https://github.com/YOUR-HANDLE" target="_blank" rel="noopener" class="contact-link">
-              <div class="contact-link-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gray-700)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div>
-              <div><div class="contact-link-text">GitHub</div><div class="contact-link-sub">github.com/your-handle</div></div>
-            </a>
-          </div>
-        </div>
-        <div class="fade-up" style="transition-delay:.15s">
-          <div class="contact-form">
-            <div class="form-row">
-              <div class="form-group"><label class="form-label" for="fname">First name</label><input class="form-input" id="fname" type="text" placeholder="Jane" /></div>
-              <div class="form-group"><label class="form-label" for="lname">Last name</label><input class="form-input" id="lname" type="text" placeholder="Smith" /></div>
-            </div>
-            <div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" type="email" placeholder="jane@company.com" /></div>
-            <div class="form-group"><label class="form-label" for="message">Message</label><textarea class="form-textarea" id="message" placeholder="Tell me about your project or opportunity…"></textarea></div>
-            <button class="form-submit" onclick="handleSubmit(event)">Send message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><div class="footer-mark"></div>Your Name · Analytics Portfolio</div>
+      <div class="footer-brand"><div class="footer-mark"></div>Jonathan Ormeno · Analytics Portfolio</div>
       <p>Built with HTML &amp; CSS · Hosted on GitHub Pages</p>
     </div>
   </footer>
@@ -466,14 +365,6 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target;
-      btn.textContent = 'Message sent ✓';
-      btn.style.background = 'var(--gray-700)';
-      setTimeout(() => { btn.textContent = 'Send message'; btn.style.background = ''; }, 3000);
-    }
   </script>
 </body>
 </html>
